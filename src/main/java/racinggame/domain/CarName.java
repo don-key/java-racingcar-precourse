@@ -11,7 +11,7 @@ public class CarName {
     public CarName(String name) {
         validateNullOrBlank(name);
         validateNameSize(name);
-        this.name = name;
+        this.name = name.trim();
     }
 
     private void validateNullOrBlank(String name) {
