@@ -19,7 +19,7 @@ public class Car {
     }
 
     protected boolean isMoving() {
-        return carMoveCondition.isMoving() == CarMoveStatus.MOVE;
+        return carMoveCondition.isMoving();
     }
 
     public String getCarName() {
