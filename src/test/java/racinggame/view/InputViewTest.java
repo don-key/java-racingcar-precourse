@@ -7,7 +7,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class InputViewTest {
 
@@ -31,5 +32,20 @@ class InputViewTest {
         List<String> carsName = inputView.splitCarNames(input);
 
         assertThat(carsName.size()).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"", "-1", "0", "abcd"})
+    void 유효하지않은_시도_횟수_입력(String input) {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> inputView.checkTryCount(input));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1", "5", "10"})
+    void 유효한_시도_횟수_입력(String input) {
+        int tryCount = inputView.checkTryCount(input);
+
+        assertThat(tryCount).isGreaterThan(0);
     }
 }
