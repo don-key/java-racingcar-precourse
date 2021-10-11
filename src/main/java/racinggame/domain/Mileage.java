@@ -8,6 +8,10 @@ public class Mileage {
         this.mileage = 0;
     }
 
+    public Mileage(int mileage) {
+        this.mileage = mileage;
+    }
+
     public void addMileage() {
         this.mileage += 1;
     }

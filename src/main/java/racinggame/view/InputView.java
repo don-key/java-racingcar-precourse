@@ -12,7 +12,7 @@ public class InputView {
     private static final String REGEX_NUMBER = "[0-9]+";
     private static final String SEPARATOR_COMMA = ",";
     private static final String SEPARATOR_TWO_COMMA = ",,";
-    private static final String INVALID_TRY_COUNT = "[ERROR] 시도 횟수가 정상적으로 입력되지 않았습니다. 숫자만 입력해주세요.";
+    private static final String INVALID_TRY_COUNT = "[ERROR] 시도 횟수가 정상적으로 입력되지 않았습니다. 1이상의 숫자만 입력해주세요.";
     private static final String INVALID_CAR_NAME = "[ERROR] 자동차의 이름이 정상적으로 입력되지 않았습니다. 쉼표(,)를 확인해주세요.";
 
 
@@ -63,7 +63,7 @@ public class InputView {
 
     private void validateTryCountIsNumber(String tryCount) {
         if (!tryCount.matches(REGEX_NUMBER)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INVALID_TRY_COUNT);
         }
     }
 
